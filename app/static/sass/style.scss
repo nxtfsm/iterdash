@@ -1,0 +1,17 @@
+@use 'colors';
+@use 'bars';
+@use 'containers';
+@use 'grids';
+
+$font-stack:  Futura, sans-serif;
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: $font-stack;
+  overflow: hidden;
+}
+
+body {
+  background-color: colors.$blue_3;
+}
