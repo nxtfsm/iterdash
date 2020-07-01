@@ -1,5 +1,5 @@
 $(document).ready( () => {
-  animTopBar()
+  animTests()
   elementLoader()
 
 })
@@ -24,6 +24,6 @@ let clearActiveClass = () => {
 
 let toggleClass = (element, className) => element.classList.toggle(className)
 
-let animTopBar = () =>
+let animTests = () =>
   //gsap.from('.bar.topNav', {duration: 1, y: '-100%', ease: 'sine'})
   gsap.from('.dash-panel.test', {duration: 1, delay: 1, x: '-100%', y:'100%', opacity:0, ease: 'sine'})
