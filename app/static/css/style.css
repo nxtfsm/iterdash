@@ -83,18 +83,19 @@
 
 .container.dash {
   grid-area: 2/2/span 8/span 5;
-  padding-bottom: 10px;
 }
 
 .dash-panel {
-  width: inherit;
-  height: 100%;
+  position: absolute;
+  width: 98%;
+  height: 98%;
   /*background-color: colors.$yellow_4;*/
   border-radius: 8px;
   border: solid 3px;
   border-color: #2a3a49;
-  /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
-  padding: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+  --webkit-backface-visiblity: hidden;
   display: grid;
   grid-gap: 8px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;

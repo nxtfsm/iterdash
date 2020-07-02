@@ -1,12 +1,15 @@
 $(document).ready( () => {
-  animTests()
   elementLoader()
 })
 
 let elementLoader = () => {
   $(document).on('click', '.bar.topNav > button', function () {
-    updateActiveTabTo(this)
-    loadNewDash(this.innerHTML)
+    if (this.classList.contains('active')) {
+      return
+    } else {
+      updateActiveTabTo(this)
+      loadNewDash(this.innerHTML)
+      }
   })
 }
 
@@ -21,30 +24,32 @@ let clearActiveClass = () => {
 
 let toggleClass = (element, className) => element.classList.toggle(className)
 
-let loadNewDash = dashToLoad => loadDashHTML("/" + dashToLoad)
+let flushHiddenOfType = classType => $(`${classType}.hidden`).remove()
 
-let loadDashHTML = fromRoute => {
+let loadNewDash = dashToLoad => loadHTMLinto("/" + dashToLoad, "#innerDashC")
+
+let loadHTMLinto = (fromRoute, intoContainerID) => {
+  if (document.querySelector(intoContainerID).children.length >= 2) {
+    flushHiddenOfType('.dash-panel')
+    }
+
   fetch(fromRoute)
     .then( response => response.text() )
       .then( (data) => {
         data = data.trim()
-        $("#topGrid").append(data)
+        $(intoContainerID).prepend(data)
       })
+        .then(animDashLoad(intoContainerID))
+    }
 
-}
+let animDashLoad = (intoContainer) => () => {
+  let animContainer = document.querySelector(intoContainer)
 
-let animDashLoad = () => {
+  let toRemove = animContainer.children.item(1)
+  let toDash = animContainer.children.item(0)
 
-  //gsap.to('#topGrid:')
-}
+  gsap.from(toDash, {duration: 1, rotateY: '180deg', opacity:0, ease: 'sine'})
+  gsap.to(toRemove, {duration: 1, rotateY: '-180deg', opacity:0, ease: 'sine'})
 
-let animTests = () => {
-  //gsap.from('.bar.topNav', {duration: 1, y: '-100%', ease: 'sine'})
-  //gsap.from('#testPanel', {duration: 1, delay: 1, x: '-100%', opacity:0, ease: 'sine'})
-  //gsap.from('#anotherTestPanel', {duration: 1, delay: 1, x: '-100%', opacity:0, ease: 'sine'})
-   //const tl = gsap.timeline({defaults: { duration: 1 }});
-  //tl
-  //  .from('#testPanel', {delay: 1, x: '-100%', opacity:0, ease: 'sine'})
-  //  .from('#anotherTestPanel', {delay: 1, x: '-100%', opacity:0, ease: 'sine'})
-  //return tl
+  toggleClass(toRemove, 'hidden')
 }
