@@ -1,12 +1,12 @@
 $(document).ready( () => {
+  console.log(dashes)
   elementLoader()
 })
 
 let elementLoader = () => {
   var firstButton = document.querySelector('.bar.topNav :first-child')
-  console.log(firstButton)
-
   toggleClass(firstButton, 'active')
+
   $(document).on('click', '.bar.topNav > button', function () {
     if (this.classList.contains('active')) {
       return
