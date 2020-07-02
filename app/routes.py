@@ -4,7 +4,7 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title="Dashly Dash")
+    return render_template('index.html', title="Dashly Dash", dashes=app.dashes)
 
 @app.route('/Home')
 def dash_home():

@@ -57,7 +57,7 @@
 .tl-grid {
   background: linear-gradient(to top, #011421, #546475);
   display: grid;
-  grid-template-rows: 30px repeat(10, 9vh);
+  grid-template-rows: 20px repeat(10, 9vh);
   grid-template-columns: 60px repeat(10, 7vw);
   gap: 8px;
   /*grid-template-areas:
@@ -87,8 +87,8 @@
 
 .dash-panel {
   position: absolute;
-  width: 98%;
-  height: 98%;
+  width: 99%;
+  height: 99%;
   /*background-color: colors.$yellow_4;*/
   border-radius: 8px;
   border: solid 3px;
