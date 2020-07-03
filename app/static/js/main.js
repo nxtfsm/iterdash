@@ -65,7 +65,7 @@ let animDashLoad = (intoContainer, direction) => () => {
   let toRemove = animContainer.children.item(1)
   let toDash = animContainer.children.item(0)
 
-  if (direction == 'right') {
+  if (direction == 'left') {
     gsap.from(toDash, { x:'-100%', scale: '.7', ease: 'power1'})
     gsap.to(toRemove, { x: '100%', scale: '.7', ease: 'power1'})
   } else {
