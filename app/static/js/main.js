@@ -66,11 +66,11 @@ let animDashLoad = (intoContainer, direction) => () => {
   let toDash = animContainer.children.item(0)
 
   if (direction == 'right') {
-    gsap.from(toDash, { x:'-100%', ease: 'power2'})
-    gsap.to(toRemove, { x: '100%', ease: 'power2'})
+    gsap.from(toDash, { x:'-100%', scale: '.7', ease: 'power1'})
+    gsap.to(toRemove, { x: '100%', scale: '.7', ease: 'power1'})
   } else {
-    gsap.from(toDash, { x: '100%', ease: 'power2' })
-    gsap.to(toRemove, { x:'-100%', ease: 'power2' })
+    gsap.from(toDash, { x: '100%', scale: '.7', ease: 'power1' })
+    gsap.to(toRemove, { x:'-100%', scale: '.7', ease: 'power1' })
   }
 
   toggleClass(toRemove, 'hidden')
