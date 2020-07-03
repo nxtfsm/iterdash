@@ -6,16 +6,21 @@ $(document).ready( () => {
 let elementLoader = () => {
   var firstButton = document.querySelector('.bar.topNav :first-child')
   toggleClass(firstButton, 'active')
+  var activeIdx = dashes.indexOf(firstButton.innerHTML)
 
   $(document).on('click', '.bar.topNav > button', function () {
     if (this.classList.contains('active')) {
       return
     } else {
+      var nextIdx = dashes.indexOf(this.innerHTML)
+      var direction = directionFromIdxCompare(activeIdx, nextIdx)
+      activeIdx = nextIdx
+
       updateActiveTabTo(this)
-      loadNewDash(this.innerHTML)
+      loadNewDash(this.innerHTML, direction)
       }
-  })
-}
+    })
+  }
 
 let updateActiveTabTo = toThis => { clearActiveClass(), toggleClass(toThis, 'active') }
 
@@ -30,33 +35,43 @@ let toggleClass = (element, className) => element.classList.toggle(className)
 
 let flushHiddenOfType = classType => $(`${classType}.hidden`).remove()
 
-let loadNewDash = dashToLoad => loadHTMLinto("/" + dashToLoad, "#innerDashC")
+let loadNewDash = (dashToLd, inDir) => loadHTMLinto(dashToLd, inDir, "#innerDashC")
 
-let loadHTMLinto = (fromRoute, intoContainerID) => {
+let directionFromIdxCompare = (current, next) => {
+    if (current < next) {
+      return 'right'
+    } else {
+      return 'left'
+    }
+  }
+
+let loadHTMLinto = (fromRoute, direction, intoContainerID) => {
   if (document.querySelector(intoContainerID).children.length >= 2) {
     flushHiddenOfType('.dash-panel')
     }
 
-  fetch(fromRoute)
+  fetch("/" + fromRoute)
     .then( response => response.text() )
       .then( (data) => {
         data = data.trim()
         $(intoContainerID).prepend(data)
       })
-        .then(animDashLoad(intoContainerID))
+        .then(animDashLoad(intoContainerID, direction))
     }
 
-let animDashLoad = (intoContainer) => () => {
+let animDashLoad = (intoContainer, direction) => () => {
   let animContainer = document.querySelector(intoContainer)
 
   let toRemove = animContainer.children.item(1)
   let toDash = animContainer.children.item(0)
 
-  //gsap.from(toDash, {duration: 1, rotateY: '180deg', opacity:0, ease: 'sine'})
-  //gsap.to(toRemove, {duration: 1, rotateY: '-180deg', opacity:0, ease: 'sine'})
-
-  gsap.from(toDash, {duration: 1, x:'-100%', ease: 'power2'})
-  gsap.to(toRemove, {duration: 1, x: '100%', ease: 'power2'})
+  if (direction == 'right') {
+    gsap.from(toDash, { x:'-100%', ease: 'power2'})
+    gsap.to(toRemove, { x: '100%', ease: 'power2'})
+  } else {
+    gsap.from(toDash, { x: '100%', ease: 'power2' })
+    gsap.to(toRemove, { x:'-100%', ease: 'power2' })
+  }
 
   toggleClass(toRemove, 'hidden')
 }
