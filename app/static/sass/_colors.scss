@@ -1,16 +1,36 @@
 /* color palettes: 0->5 lightest->darkest */
 /* blue */
-$blue_0: #e3f5ff;
-$blue_1: #b1c2d5;
-$blue_2: #8192a4;
-$blue_3: #546475;
-$blue_4: #2a3a49;
-$blue_5: #011421;
+$blue_0: rgb(227, 245, 255);
+$blue_0_70: rgba(227, 245, 255, 0.7);
+$blue_1: rgb(177, 194, 213);
+$blue_1_70: rgba(177, 194, 213, 0.7);
+$blue_2: rgb(129, 146, 164);
+$blue_2_70: rgba(129, 146, 164, 0.7);
+$blue_3: rgb(84, 100, 117);
+$blue_3_70: rgba(84, 100, 117, 0.7);
+$blue_4: rgb(42, 58, 73);
+$blue_4_70: rgba(42, 58, 73, 0.7);
+$blue_5: rgb(1, 20, 33);
+$blue_5_70: rgba(1, 20, 33, 0.7);
 
 /* yellow */
-$yellow_0: #ffffa9;
-$yellow_1: #fffd77;
-$yellow_2: #feca45;
-$yellow_3: #ffca28;
-$yellow_4: #c79a00;
-$yellow_5: #926c00;
+$yellow_0: rgb(255, 255, 169);
+$yellow_0_70: rgba(255, 255, 169, 0.7);
+$yellow_1: rgb(255, 253, 119);
+$yellow_1_70: rgba(255, 253, 119, 0.7);
+$yellow_2: rgb(254, 202, 69);
+$yellow_2_70: rgba(254, 202, 69, 0.7);
+$yellow_3: rgb(255, 202, 40);
+$yellow_3_70: rgba(255, 202, 40, 0.7);
+$yellow_4: rgb(199, 154, 0);
+$yellow_4_70: rgba(199, 154, 0, 0.7);
+$yellow_5: rgb(146, 108, 0);
+$yellow_5_70: rgba(146, 108, 0, 0.7);
+
+/* grey */
+$grey_0: rgb(213, 213, 213);
+$grey_0_70: rgba(213, 213, 213, 0.7);
+$grey_1: rgb(164, 164, 164);
+$grey_1_70: rgba(164, 164, 164, 0.7);
+$grey_2: rgb(117, 117, 117);
+$grey_2_70: rgba(117, 117, 117, 0.7);
