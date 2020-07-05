@@ -2,6 +2,8 @@
 @use 'bars';
 @use 'containers';
 @use 'grids';
+@use 'cards';
+@use 'labels';
 
 $font-stack:  Futura, sans-serif;
 
@@ -9,6 +11,7 @@ $font-stack:  Futura, sans-serif;
   margin: 0px;
   padding: 0px;
   font-family: $font-stack;
+  box-sizing: border-box;
   overflow: hidden;
 }
 

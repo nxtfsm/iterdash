@@ -1,3 +1,5 @@
+@use 'colors';
+
 .container {
   background-color: transparent;
 }
@@ -10,4 +12,14 @@
   display: flex;
   justify-content: center;
   align-content: center;
+
+
+}
+
+.container.for-card.full {
+  grid-column: 2 / -2;
+  grid-row: 2 / 4;
+  border: outset 4px;
+  border-color: colors.$blue_4;
+  border-radius: 8px;
 }

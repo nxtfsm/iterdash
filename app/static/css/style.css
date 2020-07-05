@@ -55,9 +55,17 @@
   align-content: center;
 }
 
+.container.for-card.full {
+  grid-column: 2/-2;
+  grid-row: 2/4;
+  border: outset 4px;
+  border-color: #2a3a49;
+  border-radius: 8px;
+}
+
 .tl-grid {
   width: 100vw;
-  height: calc(100vh - 56px);
+  height: calc(100vh - 54px);
   background: linear-gradient(to top, #011421, #546475);
   display: grid;
   grid-template-rows: 16px repeat(10, 1fr);
@@ -71,20 +79,20 @@
 
 .dash-panel {
   position: absolute;
-  width: 99%;
-  height: 99%;
+  width: 100%;
+  height: 100%;
   /*background-color: colors.$yellow_4;*/
-  border-radius: 8px;
-  border: solid 3px;
+  border-radius: 16px;
+  border: outset 4px;
   border-color: #2a3a49;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2);
   /*backface-visibility: hidden;
   --webkit-backface-visiblity: hidden;*/
   display: grid;
   grid-gap: 8px;
-  grid-template-columns: repeat(9, 1fr);
-  grid-auto-rows: repeat(12, 1fr);
-  background: repeating-linear-gradient(-55deg, rgba(164, 164, 164, 0.7), rgba(164, 164, 164, 0.7) 5px, rgba(213, 213, 213, 0.7) 5px, rgba(213, 213, 213, 0.7) 10px);
+  grid-template-columns: 8px repeat(6, 1fr) 8px;
+  grid-template-rows: 8px repeat(12, 1fr) 8px;
+  background: repeating-linear-gradient(-55deg, rgba(164, 164, 164, 0.5), rgba(164, 164, 164, 0.5) 4px, rgba(213, 213, 213, 0.5) 4px, rgba(213, 213, 213, 0.5) 8px);
 }
 
 .cell {
@@ -98,10 +106,62 @@
   color: #2a3a49;
 }
 
+.card {
+  /* styles to fill animation container-inner parent */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*border: outset 4px;
+  border-color: colors.$blue_4;
+  border-radius: 8px;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*backface-visibility: hidden;
+  --webkit-backface-visiblity: hidden;*/
+  cursor: pointer;
+}
+
+.card.top-level {
+  /*background: repeating-linear-gradient(
+    55deg,
+    colors.$yellow_3,
+    colors.$yellow_3 5px,
+    colors.$yellow_4 5px,
+    colors.$yellow_4 10px
+    );*/
+  background: linear-gradient(to top, #c79a00, #feca45);
+}
+
+.card.detail-level {
+  /*background: repeating-linear-gradient(
+    -55deg,
+    rgba(42, 58, 73, 1),
+    rgba(42, 58, 73, 1) 5px,
+    rgba(84, 100, 117, 1) 5px,
+    rgba(84, 100, 117, 1) 10px
+    );*/
+  background: linear-gradient(to top, #2a3a49, #546475);
+}
+
+.label {
+  color: #2a3a49;
+}
+
+.label.headline {
+  font-size: 64px;
+}
+
+.card.detail-level > .label {
+  color: #ffca28;
+}
+
 * {
   margin: 0px;
   padding: 0px;
   font-family: Futura, sans-serif;
+  box-sizing: border-box;
   overflow: hidden;
 }
 

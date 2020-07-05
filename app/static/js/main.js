@@ -1,12 +1,8 @@
 $(document).ready( () => {
-  console.log(dashes)
   elementLoader()
 })
 
 let elementLoader = () => {
-  /*var firstButton = document.querySelector('.bar.topNav :first-child')
-  toggleClass(firstButton, 'active')
-  var activeIdx = dashes.indexOf(firstButton.innerHTML)*/
   var activeIdx = setFirst()
 
   $(document).on('mouseenter', '.bar.topNav > button', function() {
@@ -32,7 +28,6 @@ let elementLoader = () => {
       topNavBtnAnim(document.querySelector('button.active'), 'exit')
       topNavBtnAnim(this, 'select')
 
-
       var nextIdx = dashes.indexOf(this.innerHTML)
       var direction = directionFromIdxCompare(activeIdx, nextIdx)
       activeIdx = nextIdx
@@ -41,7 +36,29 @@ let elementLoader = () => {
       loadNewDash(this.innerHTML, direction)
       }
     })
+
+    $(document).on('click', '.container.for-card', function() {
+      console.log('click!')
+      cardSwitcher(this)
+    })
   }
+
+let cardSwitcher = outerContainer => {
+  const tl = gsap.timeline({ defaults: { transformOrigin: "bottom"} })
+  innerContainer = outerContainer.children[0]
+  topFace = innerContainer.children[1]
+
+  if (Array.from(topFace.classList).includes('hidden')) {
+    tl.to(topFace, {y:"0%"})
+    tl.to(outerContainer, {borderStyle:"outset", borderColor:"rgb(42, 58, 73)"}, "-=.5")
+
+  } else {
+    tl.to(outerContainer, {borderStyle:"inset", borderColor:"rgb(199, 154, 0)"})
+    tl.to(topFace, {y:"100%"}, "-=.5")
+  }
+
+  toggleClass(topFace, 'hidden')
+}
 
 let setFirst = () => {
   let firstButton = document.querySelector('.bar.topNav :first-child')
@@ -59,7 +76,6 @@ let topNavBtnAnim = (button, call) => {
     gsap.to(button, {duration: .3, transformOrigin: "bottom center", backgroundColor: "#b1c2d5", color: "#011421", ease: 'power1'})
   }
 }
-
 
 let updateActiveTabTo = toThis => { clearActiveClass(), toggleClass(toThis, 'active') }
 
@@ -96,7 +112,6 @@ let loadHTMLinto = (fromRoute, direction, intoContainerID) => {
         $(intoContainerID).prepend(data)
       })
         .then(animDashLoad(intoContainerID, direction))
-
     }
 
 let animDashLoad = (intoContainer, direction) => () => {

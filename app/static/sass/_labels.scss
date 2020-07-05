@@ -1,0 +1,14 @@
+@use 'colors';
+@use 'cards';
+
+.label {
+  color: colors.$blue_4;
+}
+
+.label.headline {
+  font-size: 64px;
+}
+
+.card.detail-level > .label {
+  color: colors.$yellow_3
+}
