@@ -39,9 +39,18 @@ let elementLoader = () => {
 
     $(document).on('click', '.container.for-card', function() {
       console.log('click!')
-      cardSwitcher(this)
+      //cardSwitcher(this)
+      switchDetailCard(this)
     })
   }
+
+let switchDetailCard = toThis => {
+  detailsShowing = document.querySelector('.container.for-card.showing-details')
+  if (detailsShowing && (detailsShowing != toThis)) {
+    cardSwitcher(detailsShowing)
+  }
+  cardSwitcher(toThis)
+}
 
 let cardSwitcher = outerContainer => {
   const tl = gsap.timeline({ defaults: { transformOrigin: "bottom"} })
@@ -50,14 +59,15 @@ let cardSwitcher = outerContainer => {
 
   if (Array.from(topFace.classList).includes('hidden')) {
     tl.to(topFace, {y:"0%"})
-    tl.to(outerContainer, {borderStyle:"outset", borderColor:"rgb(42, 58, 73)"}, "-=.5")
+    tl.to(outerContainer, {borderStyle:"outset", borderColor:"rgb(42, 58, 73)", border:"4px"}, "-=.5")
 
   } else {
-    tl.to(outerContainer, {borderStyle:"inset", borderColor:"rgb(199, 154, 0)"})
+    tl.to(outerContainer, {borderStyle:"inset", borderColor:"rgb(199, 154, 0)", border:"2px"})
     tl.to(topFace, {y:"100%"}, "-=.5")
   }
 
   toggleClass(topFace, 'hidden')
+  toggleClass(outerContainer, 'showing-details')
 }
 
 let setFirst = () => {

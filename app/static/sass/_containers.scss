@@ -16,10 +16,64 @@
 
 }
 
-.container.for-card.full {
-  grid-column: 2 / -2;
-  grid-row: 2 / 4;
+.container.for-card {
   border: outset 4px;
   border-color: colors.$blue_4;
-  border-radius: 8px;
+  border-radius: 16px;
+}
+
+.container.for-card.full {
+  grid-column: 2 / -2;
+}
+
+.top-row {
+  grid-row: 2 / 4;
+}
+
+.second-row {
+  grid-row: 4 / 6;
+}
+
+.third-row {
+  grid-row: 6 / 8;
+}
+
+.fourth-row {
+  grid-row: 8 / 10;
+}
+
+.fifth-row {
+  grid-row: 10 / 12;
+}
+
+.sixth-row {
+  grid-row: 12 / 14;
+}
+
+.container.for-card.left-half {
+  grid-column: 2 / 5;
+}
+
+.container.for-card.right-half {
+  grid-column: 5 / -2;
+}
+
+.container.for-card.left-third {
+  grid-column: 2 / 4;
+}
+
+.container.for-card.middle-third {
+  grid-column: 4 / 6;
+}
+
+.container.for-card.right-third {
+  grid-column: 6 / -2;
+}
+
+.container.for-card.left-two {
+  grid-column: 2 / 6;
+}
+
+.container.for-card.right-two {
+  grid-column: 4 / -2;
 }

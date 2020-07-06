@@ -3,6 +3,7 @@
 .bar {
   background-color: colors.$blue_4_70;
   height: 54px;
+  z-index: 1;
 }
 
 .bar button {
@@ -41,4 +42,5 @@
 .bar.topNav {
   border-bottom: solid 2px;
   border-color: colors.$blue_1;
+
 }
