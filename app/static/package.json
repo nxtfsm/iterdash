@@ -16,6 +16,8 @@
     "url": "https://github.com/nxtfsm/iterdash/issues"
   },
   "homepage": "https://github.com/nxtfsm/iterdash#readme",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.5.1"
+  },
   "devDependencies": {}
 }

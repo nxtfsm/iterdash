@@ -2,8 +2,6 @@ $(document).ready( () => {
   elementLoader()
 })
 
-
-
 let elementLoader = () => {
   var activeIdx = setFirst()
 
