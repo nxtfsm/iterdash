@@ -1,9 +1,14 @@
 @use 'colors';
+@use 'breakpoints';
 
 .bar {
   background-color: colors.$blue_4_70;
   height: 54px;
   z-index: 1;
+
+  @media (breakpoints.$below-xs) {
+    height: 48px;
+  }
 }
 
 .bar button {
@@ -21,12 +26,23 @@
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   cursor: pointer;
-}
+
+
+  @media (breakpoints.$below-xs) {
+    height: 100%;
+    margin: 0px;
+    padding: 8px 8px;
+    border-radius: 0px;
+
+    }
+  }
+
 
 .bar button:first-of-type {
+  @media (breakpoints.$above-xs) {
   margin-left: 24px;
   background-color: colors.$blue_1;
-
+  }
 }
 
 /*.bar button:hover {
@@ -43,4 +59,9 @@
   border-bottom: solid 2px;
   border-color: colors.$blue_1;
 
+  @media (breakpoints.$below-xs) {
+    button:first-of-type {
+      display: none;
+    }
+  }
 }

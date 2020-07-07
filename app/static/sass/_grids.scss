@@ -1,18 +1,40 @@
 @use 'colors';
+@use 'breakpoints';
 
-.tl-grid {
+.tl-container {
   width: 100vw;
   height: 100vh;
   background: linear-gradient(to top, colors.$blue_5, colors.$blue_3);
 
-  display: grid;
-  grid-template-rows: 16px repeat(10, 1fr);
-  grid-template-columns: 60px repeat(10, 1fr);
-  gap: 8px;
+  @media (breakpoints.$above-m) {
+    display: grid;
+    grid-template-rows: 16px repeat(10, 1fr) 16px;
+    grid-template-columns: 48px repeat(10, 1fr) 48px;
+    gap: 8px;
+  }
+
+  @media(breakpoints.$below-xs) {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
 }
 
 .container.dash {
-  grid-area: 2 / 2 / span 9 / span 4;
+  @media (breakpoints.$above-l) {
+    grid-area: 2 / 2 / span 9 / span 4;
+  }
+
+  @media ((breakpoints.$above-m) and (breakpoints.$below-l)) {
+    grid-area: 2 / 2 / span 9 / span 6;
+  }
+
+  @media (breakpoints.$below_xs) {
+    width: 95%;
+    height: 90%;
+    margin-top: 8px;
+
+  }
 }
 
 .dash-panel {

@@ -1,4 +1,22 @@
 
 <div class="dash-panel test" id="homePanel">
-  <div id="homeText">Landing</div>
+  <div class="container for-card full top-row">
+    <div class="container-inner">
+      <div class="card detail-level hidden">
+        <ul class = "card-list">
+          <li>Item 1</li>
+          <li>Item 2</li>
+
+        </ul>
+      </div>
+      <div class="card top-level">
+        <div class="label headline">
+          <svg class="navIcon">
+            <use xlink:href="{{ url_for('static', filename='node_modules/carbon-icons.svg#icon--dashboard') }}"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
